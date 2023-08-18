@@ -285,7 +285,8 @@ class Orb{
         
         // ctx.fillStyle = color;
         
-        ctx.filter = "blur(40px)";
+        // ctx.filter = "blur(40px)"; 
+
         // ctx.globalAlpha = 1; 
         ctx.fill();
         
@@ -353,7 +354,7 @@ function setBg(hueValue) {
     const gradient = ctx.createLinearGradient(0, 0, 0, height);
     gradient.addColorStop(0, 'rgb( 255 , 255 , 255)');
     gradient.addColorStop(1, `hsl(${hueValue}, 95%, 50%)`);
-    ctx.filter = "blur(0px)";
+    // ctx.filter = "blur(0px)";
     ctx.globalAlpha = 0.7;
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
