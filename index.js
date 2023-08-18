@@ -242,6 +242,32 @@ function smoothstep(t) {
 // 複数
 
 
+let radius;
+
+
+if (window.matchMedia('(max-width: 767px)').matches) {
+    console.log('ok')
+    radius =  Math.random()*100+100;
+}else if (window.matchMedia('(min-width: 768px)').matches) {
+    console.log('ng')
+    radius =  Math.random()*100+200;
+}
+
+// function swichByWidth() {
+//     if (window.matchMedia('(max-width: 767px)').matches) {
+//         console.log('ok')
+//         radius =  0;
+//     }else if (window.matchMedia('(min-width: 768px)').matches) {
+
+//         radius = Math.random()*100+200;
+//     }
+// }
+
+// window.onload = swichByWidth;
+// window.onresize = swichByWidth;
+
+
+
 const inc = 0.002;
 
 // const rangeX = ;
@@ -263,7 +289,9 @@ class Orb{
         
         
         // * (max - min) + min
-        this.radius = Math.random()*100+200;
+        // this.radius = radius;
+
+
 
         // this.hue = Math.random()*140+220;
         this.hue = hue
@@ -275,6 +303,9 @@ class Orb{
     
     init(){
         
+
+        this.radius = radius;
+
         ctx.beginPath();
         ctx.arc(this.x,this.y,this.radius,0,2 * Math.PI);
         ctx.closePath();
@@ -414,7 +445,6 @@ function draw() {
     for (const orb of orbs) {
         orb.update();
         // console.log(this.xoff,this.yoff)
-
     }
 
 
@@ -432,6 +462,20 @@ window.addEventListener('resize', () => {
 
     width = canvas.width;
     height = canvas.height;
+
+
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        console.log('ok')
+        radius = Math.random()*100+100;
+    }else if (window.matchMedia('(min-width: 768px)').matches) {
+
+        radius = Math.random()*100+200;
+    }
+
+    for (const orb of orbs) {
+        orb.update();
+        // console.log(this.xoff,this.yoff)
+    }
 });
 
 // function resizeCanvas() {
